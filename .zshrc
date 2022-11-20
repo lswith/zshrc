@@ -68,6 +68,10 @@ ZSH_THEME="robbyrussell"
 # FZF
 export FZF_BASE=/opt/homebrew/bin/fzf
 
+# Vi-Mode
+export VI_MODE_RESET_PROMPT_ON_MODE_CHANGE=true
+export VI_MODE_SET_CURSOR=true
+
 # Which plugins would you like to load?
 # Standard plugins can be found in $ZSH/plugins/
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
