@@ -77,7 +77,7 @@ export VI_MODE_SET_CURSOR=true
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git brew fzf docker docker-compose gh kubectl macos rust terraform vi-mode)
+plugins=(git brew fzf docker docker-compose gh kubectl macos rust terraform vi-mode aws)
 
 source $ZSH/oh-my-zsh.sh
 
