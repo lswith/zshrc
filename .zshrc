@@ -8,7 +8,18 @@ export ZSH="$HOME/.oh-my-zsh"
 # load a random theme each time oh-my-zsh is loaded, in which case,
 # to know which specific one was loaded, run: echo $RANDOM_THEME
 # See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
-ZSH_THEME="robbyrussell"
+# ZSH_THEME="robbyrussell"
+#ZSH_THEME="darkblood"
+
+# Custom Darkblood Theme
+# PROMPT=$'%{$fg[red]%}┌[%{$fg_bold[white]%}%n%{$reset_color%}%{$fg[red]%}@%{$fg_bold[white]%}%m%{$reset_color%}%{$fg[red]%}] [%{$fg_bold[white]%}/dev/%y%{$reset_color%}%{$fg[red]%}] %{$(git_prompt_info)%}%(?,,%{$fg[red]%}[%{$fg_bold[white]%}%?%{$reset_color%}%{$fg[red]%}])
+PROMPT=$'%{$fg[red]%}┌[%{$fg_bold[white]%}%m%{$reset_color%}%{$fg[red]%}] [%{$fg_bold[white]%}%*%{$reset_color%}%{$fg[red]%}] %{$(git_prompt_info)%}%(?,,%{$fg[red]%}[%{$fg_bold[white]%}%?%{$reset_color%}%{$fg[red]%}])
+%{$fg[red]%}└[%{$fg_bold[white]%}%~%{$reset_color%}%{$fg[red]%}]>%{$reset_color%} '
+PS2=$' %{$fg[red]%}|>%{$reset_color%} '
+
+ZSH_THEME_GIT_PROMPT_PREFIX="%{$fg[red]%}[%{$fg_bold[white]%}"
+ZSH_THEME_GIT_PROMPT_SUFFIX="%{$reset_color%}%{$fg[red]%}] "
+ZSH_THEME_GIT_PROMPT_DIRTY=" %{$fg[red]%}⚡%{$reset_color%}"
 
 # Set list of themes to pick from when loading at random
 # Setting this variable when ZSH_THEME=random will cause zsh to load
@@ -77,7 +88,7 @@ export VI_MODE_SET_CURSOR=true
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git brew fzf docker docker-compose gh kubectl macos rust terraform vi-mode aws)
+plugins=(git brew fzf docker docker-compose gh kubectl macos rust terraform vi-mode aws kops)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -119,3 +130,33 @@ export PATH=$PATH:$HOME/bin
 
 fpath=($fpath ~/.config/zsh/completion)
 
+# Add path to Krew
+export PATH="${KREW_ROOT:-$HOME/.krew}/bin:$PATH"
+export PATH="/opt/homebrew/opt/llvm/bin:$PATH" 
+
+
+# aws_vault() {
+#   profile=$AWS_PROFILE
+#   aws-vault exec $profile -- "$@"
+# }
+
+# alias kops="aws_vault kops"
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+eval "$(op completion zsh)"; compdef _op op
+
+export MANPAGER='nvim +Man!'
+
+alias cat='bat'
+export BAT_THEME="Solarized (dark)"
+
+alias ls="lsd"
+
+# export AWS_VAULT_BACKEND="file"
+alias dev="aws-vault exec dev_kops --duration=8h -- "
+alias ser_dev="aws-vault exec services_dev_kops --duration=8h -- "
+alias ser="aws-vault exec services_kops --duration=8h -- "
+alias prod="aws-vault exec prod_kops --duration=8h -- "
+
+export GPG_TTY=$(tty)
