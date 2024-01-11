@@ -160,3 +160,6 @@ alias ser="aws-vault exec services_kops --duration=8h -- "
 alias prod="aws-vault exec prod_kops --duration=8h -- "
 
 export GPG_TTY=$(tty)
+
+eval "$(atuin init zsh)"
+eval "$(atuin init zsh)"
