@@ -163,3 +163,6 @@ export GPG_TTY=$(tty)
 
 eval "$(atuin init zsh)"
 eval "$(atuin init zsh)"
+eval "$(zoxide init zsh)"
+
+export PATH="/opt/homebrew/opt/python@3.12/libexec/bin:$PATH"
