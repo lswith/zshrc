@@ -106,6 +106,8 @@ source $ZSH/oh-my-zsh.sh
 #   export EDITOR='mvim'
 # fi
 
+export EDITOR='nvim'
+
 # Compilation flags
 # export ARCHFLAGS="-arch x86_64"
 
@@ -166,3 +168,6 @@ eval "$(atuin init zsh)"
 eval "$(zoxide init zsh)"
 
 export PATH="/opt/homebrew/opt/python@3.12/libexec/bin:$PATH"
+export N_PREFIX=$HOME/.n
+export PATH=$N_PREFIX/bin:$PATH
+
