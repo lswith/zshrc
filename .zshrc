@@ -107,7 +107,6 @@ source $ZSH/oh-my-zsh.sh
 #   export EDITOR='mvim'
 # fi
 
-export EDITOR='nvim'
 
 # Compilation flags
 # export ARCHFLAGS="-arch x86_64"
@@ -125,6 +124,7 @@ export GOPATH=$HOME/go
 export PATH=$PATH:$GOROOT/bin:$GOPATH/bin
 
 alias vim='nvim'
+export MANPAGER="nvim +Man!"
 
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
@@ -147,9 +147,7 @@ export PATH="/opt/homebrew/opt/llvm/bin:$PATH"
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
-eval "$(op completion zsh)"; compdef _op op
 
-export MANPAGER='nvim +Man!'
 
 alias cat='bat'
 export BAT_THEME="Solarized (dark)"
@@ -167,6 +165,7 @@ export GPG_TTY=$(tty)
 . "$HOME/.atuin/bin/env"
 
 eval "$(atuin init zsh)"
+eval "$(atuin dotfiles var list 2>/dev/null)"
 
 export PATH="/opt/homebrew/opt/python@3.12/libexec/bin:$PATH"
 export N_PREFIX=$HOME/.n
@@ -184,3 +183,12 @@ export SDKMAN_DIR="$HOME/.sdkman"
 export PATH="${KREW_ROOT:-$HOME/.krew}/bin:$PATH"
 
 export PATH="/opt/homebrew/share/google-cloud-sdk/bin:$PATH"
+export PATH="/opt/homebrew/opt/libpq/bin:$PATH"
+export PATH="$HOME/.local/bin:$PATH"
+
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
+# Claude MCP secrets from 1Password
+[ -f ~/.claude/secrets.env ] && source ~/.claude/secrets.env
